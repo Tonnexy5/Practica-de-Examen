@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mi Mundo</title>
+        <meta charset="UTF-8">
+
+        <link href="css/estilo1.css" rel="stylesheet" type="text/css"/>
+
+
+
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla2 :: header2"/>
+
+
+        <h2>Elementos de Paises</h2>
+        <a th:href="@{/}">Regresar</a>
+        <br>
+        <form th:action="@{/guardarPais}"
+              method="post"
+              th:object="${paises}">
+            <input type="hidden" name="idEstado" th:field="*{id_estado}"/>
+
+            <label for="pais">Nombre del nuevo pais:</label>
+            <input type="text" name="pais" th:field="*{pais}"/>
+            <br>
+            <label for="capital">Capital del pais</label>
+            <input type="text" name="capital" th:field="*{capital}"/>
+            <br>
+            <label for="poblacion">Poblacion estimada</label>
+            <input type="text" name="poblacion" th:field="*{poblacion}"/>
+            <br>
+            <label for="costas">¿Posee costas?</label>
+            <input type="text" name="costas" th:field="*{costas}"/>
+            <hr>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+        <footer th:replace="layout/plantilla2 :: footer2"/>
+    </body>
+</html>

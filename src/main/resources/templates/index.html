@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Practica para examen</title>
+        <meta charset="UTF-8">
+        <link href="css/estilo1.css" rel="stylesheet" type="text/css"/>
+        
+        
+    </head>
+    <body>
+        <header th:replace="layout/plantilla1 :: header"/>
+        
+        <h1>             Paises  en Base De Datos           </h1>
+        <br>
+         <a th:href="@{/nuevoPais}">Nuevo Pais</a>
+        <br>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Pais</th>
+                    <th>Capital</th>
+                    <th>Poblacion</th>
+                    <th>Costas</th>
+                    
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each= "estado:${paises}">
+                    <td th:text="${estado.pais}"/>
+                    <td th:text="${estado.capital}"/>
+                    <td th:text="${estado.poblacion}"/>
+                    <td th:text="${estado.costas}"/>
+                    
+                    <td> 
+                    <a th:href="@{/modificarPais/}+${estado.id_estado}">Modificar</a>
+                    </td>
+                    
+                    <td> 
+                    <a th:href="@{/eliminarPais/}+${estado.id_estado}">Eliminar</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+
+
+        
+        
+        <footer th:replace="layout/plantilla1 :: footer"/>
+    </body>
+</html>
